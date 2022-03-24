@@ -1,0 +1,72 @@
+<nz-layout class="app-layout">
+  <nz-sider class="menu-sidebar"
+            nzCollapsible
+            nzWidth="256px"
+            nzBreakpoint="md"
+            [(nzCollapsed)]="isCollapsed"
+            [nzTrigger]="null">
+    <div class="sidebar-logo">
+      <a href="/" target="_self">
+        <img src="../assets/Imagenes/menu.png" alt="logo">
+
+        <h1>Menú Digital</h1>
+      </a>
+    </div>
+    <ul nz-menu nzTheme="dark" nzMode="inline" [nzInlineCollapsed]="isCollapsed">
+      <li nz-menu-item><a>Inicio</a></li>
+      <li nz-submenu nzOpen nzTitle="Menú" nzIcon="dashboard">
+        <ul>
+          <li nz-menu-item nzMatchRouter>
+            <a routerLink="/menu/combospersonales">Combos Personales</a>
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <a routerLink="/menu/combosfamiliares">Combos Familiares</a>
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <a routerLink="/menu/comidachina">Comida China</a>
+          </li>
+        </ul>
+      </li>
+      <li nz-submenu nzOpen nzTitle="Carrito" nzIcon="form">
+        <ul>
+          <li nz-menu-item nzMatchRouter>
+            <a routerLink="/carrito/compras">Compras</a>
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <a routerLink="/carrito/facturas">Facturas</a> 
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <a routerLink="/carrito/inventarios">Inventarios</a> 
+          </li>
+        </ul>
+      </li>
+      <li nz-submenu nzOpen nzTitle="Reportes"  nzIcon="bar-chart">
+        <ul>
+          <li nz-menu-item nzMatchRouter>
+            <a routerLink="/reportes/ventasDiarias">Ventas Diarias</a>
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <a routerLink="/reportes/resumenSemanal">Resumen Semanal</a>
+          </li>
+        </ul>
+    </li>
+    </ul>
+  </nz-sider>
+  <nz-layout>
+    <nz-header>
+      <div class="app-header">
+        <span class="header-trigger" (click)="isCollapsed = !isCollapsed">
+            <i class="trigger"
+               nz-icon
+               [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"
+            ></i>
+        </span>
+      </div>
+    </nz-header>
+    <nz-content>
+      <div class="inner-content">
+        <router-outlet></router-outlet>
+      </div>
+    </nz-content>
+  </nz-layout>
+</nz-layout>
